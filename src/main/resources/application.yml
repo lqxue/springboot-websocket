@@ -1,0 +1,4 @@
+server:
+  #配置Tomcat端口号
+  port: 80
+
