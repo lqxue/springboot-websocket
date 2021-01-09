@@ -71,7 +71,7 @@ public class WebSocketServer {
                 CloseReason.CloseCode closeCode = new CloseReason.CloseCode() {
                     @Override
                     public int getCode() {
-                        return 4011;
+                        return 4002;
                     }
                 };
                 CloseReason closeReason = new CloseReason(closeCode, url);
@@ -87,6 +87,8 @@ public class WebSocketServer {
         logger.info("有新窗口开始监听: " + sid + ",当前在线人数为" + getOnlineCount());
         logger.info("有新窗口开始监听: " + path + ",当前在线人数为" + getOnlineCount());
         logger.info("有新窗口开始监听: " + query + ",当前在线人数为" + getOnlineCount());
+
+        sendMessage("ttm.TiOi4PnsoarZ0yyxHatzTZ3fATMAAAAAbm9kZS50b2tlbnRtLm5ldA.eyJtZXRob2QiOiJyZWNlaXB0IiwiZGF0YSI6IjB4MTIzNDUifQ.FF9qUfhcty7SE9DUl1Ht6h_d0iWUcy2b7hy1SXqAMJw8BxXlQzUIKwDu0GT3gXA0HJqT3SQq4KzbOcSuXy9n1AE");
 
     }
 
@@ -129,7 +131,6 @@ public class WebSocketServer {
      * 实现服务器主动推送
      */
     public void sendMessage(String message) {
-        webSocketMap.get(sid).sendMessage(message);
         try {
             this.session.getBasicRemote().sendText(message);
         } catch (IOException e) {
